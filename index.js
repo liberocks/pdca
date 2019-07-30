@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'static')));
 
 app.use('/', require('./routes/views/index'));
+app.use('/penyetoran', require('./routes/views/penyetoran'));
 
 // app.use('/api/plan', require('./routes/api/plan'));
 // app.use('/api/do', require('./routes/api/do'));
