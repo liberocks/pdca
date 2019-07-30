@@ -1,0 +1,228 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Penyetoran</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/main.css" type="text/css">
+</head>
+
+<body>
+  <div class="alert alert-success fade" role="alert">
+    Data Setoran Tersimpan
+  </div>
+  <div class="modal fade" id="modalBuatPenyetoran" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Rencana Penyetoran Baru</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">
+        <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        Sistem PDCA
+      </a>
+    </nav>
+    <div class="container-fluid p-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Rincian Penyetoran Dokumen</h1>
+        <a href="/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+          Kembali
+        </a>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <div class="row">
+            <div class="col-12">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="plan-tab" data-toggle="tab" href="#plan" role="tab"
+                    aria-controls="plan" aria-selected="true">Plan</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="do-tab" data-toggle="tab" href="#do" role="tab" aria-controls="do"
+                    aria-selected="false">Do</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="check-tab" data-toggle="tab" href="#check" role="tab" aria-controls="check"
+                    aria-selected="false">Check</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="action-tab" data-toggle="tab" href="#action" role="tab" aria-controls="action"
+                    aria-selected="false">Action</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade p-4 show active" id="plan" role="tabpanel" aria-labelledby="plan-tab">
+                  <form>
+                    <div class="form-group">
+                      <label class="col-form-label">SKPD</label>
+                      <select id="skpd-select" class="form-control">
+                        <option>Pilih...</option>
+                        <option selected>Dinas Indakop</option>
+                        <option>BKPPD</option>
+                        <option>Dinas Pertanian dan Perikanan</option>
+                        <option>Dinas Pariwisata</option>
+                        <option>Dinas Kesehatan</option>
+                        <option>Dinas Pendidikan</option>
+                        <option>Dinas PUPR</option>
+                        <option>Dinas PKP</option>
+                        <option>Dinas Air Minum</option>
+                        <option>Dinas Kominfo</option>
+                        <option>Dinas Lingkungan Hidup</option>
+                        <option>Dinas Perhubungan</option>
+                        <option>Satpol PP</option>
+                        <option>SETDA</option>
+                        <option>Dinas BKKBN</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label">Jenis Review/Jenis Kegiatan</label>
+                      <select id="proker" class="form-control">
+                        <option>Pilih...</option>
+                        <option selected>DAK</option>
+                        <option>MCP KPK</option>
+                        <option>Zona Integritas</option>
+                        <option>PMPRB</option>
+                        <option>RKA</option>
+                        <option>SAKIP</option>
+                        <option value="others">Dokumen Lainnya</option>
+                      </select>
+                    </div>
+                    <div class="form-group" style="display: none;" id="others-document">
+                      <label class="col-form-label">Dokumen Lainnya</label>
+                      <input type="text" class="form-control" placeholder="Nama Dokumen">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label">Dokumen yang harus dikumpulkan (pisahkan
+                        dengan tanda koma)</label>
+                      <textarea class="form-control" rows="4">Dokumen Kontrak, Dokumen Adendum</textarea>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label">Tanggal Dokumen Harus Dikumpulkan</label><br>
+                      <input class="datepicker" width="276" value="04/08/2019" data-provide="datepicker">
+                    </div>
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary save-setoran">Simpan</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade p-4" id="do" role="tabpanel" aria-labelledby="do-tab">
+                  <form>
+                    <div class="form-group">
+                      <label class="col-form-label">Tanggal Pengumpulan Dokumen</label><br>
+                      <input class="datepicker" width="276" data-provide="datepicker">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label">Pengirim Dokumen</label>
+                      <input type="text" class="form-control" placeholder="Nama Pengirim">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label">Penerima Dokumen</label>
+                      <input type="text" class="form-control" placeholder="Nama Penerima">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label">Dokumen</label>
+                      <input type="number" class="form-control" min="1" placeholder="Nomor Index Rak">
+                    </div>
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary save-setoran">Simpan</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade p-4" id="check" role="tabpanel" aria-labelledby="check-tab">
+                  <form>
+                    <div class="form-group">
+                      <label class="col-form-label">Kelengkapan Dokumen</label><br>
+                      <input class="form-check-input" type="radio" name="kelengkapan-dok" id="kelengkapan-dok1"
+                        value="sudah">
+                      <label class="form-check-label" for="kelengkapan-dok1">
+                        Sudah Lengkap
+                      </label><br>
+                      <input class="form-check-input" type="radio" name="kelengkapan-dok" id="kelengkapan-dok2"
+                        value="belum">
+                      <label class="form-check-label" for="kelengkapan-dok2">
+                        Belum Lengkap
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label">Ketepatan Dokumen</label><br>
+                      <input class="form-check-input" type="radio" name="ketepatan-dok" id="ketepatan-dok1"
+                        value="sudah">
+                      <label class="form-check-label" for="ketepatan-dok1">
+                        Sudah Tepat
+                      </label><br>
+                      <input class="form-check-input" type="radio" name="ketepatan-dok" id="ketepatan-dok2"
+                        value="belum">
+                      <label class="form-check-label" for="ketepatan-dok2">
+                        Belum Tepat
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label">Feedback</label>
+                      <textarea class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary save-setoran">Simpan</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade p-4" id="action" role="tabpanel" aria-labelledby="action-tab">
+                  <form>
+                    <div class="form-group">
+                      <input class="form-check-input" type="checkbox" name="kelengkapan-dok" id="kelengkapan-dok1"
+                        value="sudah" style="margin-top: 10px;">
+                      <label class="form-check-label" for="kelengkapan-dok1" style="margin-right: 1rem;">
+                        Follow Up
+                      </label>
+                      <input class="datepicker" width="276" data-provide="datepicker" placeholder="Tanggal Follow Up">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose
+                          file</label>
+                      </div>
+                    </div>
+                    <div class="mb-3 progress-group" style="display:none;">
+                      <div class="progress">
+                        <div id="upload-progress" class="progress-bar progress-bar-striped" role="progressbar"></div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary save-setoran">Simpan</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap-datepicker.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+
+</html>

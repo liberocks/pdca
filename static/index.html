@@ -1,0 +1,195 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PDCA</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/main.css" type="text/css">
+</head>
+
+<body>
+  <div class="alert alert-success fade" role="alert">
+    Data Setoran Tersimpan
+  </div>
+  <div class="modal fade" id="modalBuatPenyetoran" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Rencana Penyetoran Baru</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label class="col-form-label">SKPD</label>
+              <select id="skpd-select" class="form-control">
+                <option selected>Pilih...</option>
+                <option>Dinas Indakop</option>
+                <option>BKPPD</option>
+                <option>Dinas Pertanian dan Perikanan</option>
+                <option>Dinas Pariwisata</option>
+                <option>Dinas Kesehatan</option>
+                <option>Dinas Pendidikan</option>
+                <option>Dinas PUPR</option>
+                <option>Dinas PKP</option>
+                <option>Dinas Air Minum</option>
+                <option>Dinas Kominfo</option>
+                <option>Dinas Lingkungan Hidup</option>
+                <option>Dinas Perhubungan</option>
+                <option>Satpol PP</option>
+                <option>SETDA</option>
+                <option>Dinas BKKBN</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Jenis Review/Jenis Kegiatan</label>
+              <select id="proker" class="form-control">
+                <option selected>Pilih...</option>
+                <option>DAK</option>
+                <option>MCP KPK</option>
+                <option>Zona Integritas</option>
+                <option>PMPRB</option>
+                <option>RKA</option>
+                <option>SAKIP</option>
+                <option value="others">Dokumen Lainnya</option>
+              </select>
+            </div>
+            <div class="form-group" style="display: none;" id="others-document">
+              <label class="col-form-label">Dokumen Lainnya</label>
+              <input type="text" class="form-control" placeholder="Nama Dokumen">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Dokumen yang harus dikumpulkan (pisahkan dengan tanda
+                koma)</label>
+              <textarea class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Tanggal Dokumen Harus Dikumpulkan</label><br>
+              <input class="datepicker" width="276" data-provide="datepicker">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <button type="submit" class="btn btn-primary save-setoran">Simpan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">
+        <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        Sistem PDCA
+      </a>
+    </nav>
+    <div class="container-fluid p-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Penyetoran Dokumen</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal"
+          data-target="#modalBuatPenyetoran">
+          Buat Rencana Penyetoran
+        </a>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row mb-2">
+
+                  </div>
+                  <div class="col-12">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">SKPD</th>
+                            <th scope="col">Jenis Review / Jenis Pekerjaan</th>
+                            <th scope="col">Dokumen</th>
+                            <th scope="col">Status</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Dinas Indakop</td>
+                            <td>DAK</td>
+                            <td>Dokumen Kontrak, Adendum</td>
+                            <td>
+                              <span class="badge badge-pill badge-primary">Plan</span>
+                            </td>
+                            <td>
+                              <a href="penyetoran.html">
+                                <button type="button" class="btn btn-primary btn-sm">Buka</button></td>
+                            </a>
+                          </tr>
+                          <tr>
+                            <td>BKPPD</td>
+                            <td>DAK</td>
+                            <td>Dokumen Kontrak, Adendum</td>
+                            <td>
+                              <span class="badge badge-pill badge-info">Do</span>
+                            </td>
+                            <td>
+                              <a href="penyetoran.html">
+                                <button type="button" class="btn btn-primary btn-sm">Buka</button></td>
+                            </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>BKKPD</td>
+                            <td>DAK</td>
+                            <td>Dokumen Kontrak</td>
+                            <td>
+                              <span class="badge badge-pill badge-warning">Check</span>
+                            </td>
+                            <td>
+                              <a href="penyetoran.html">
+                                <button type="button" class="btn btn-primary btn-sm">Buka</button></td>
+                            </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Dinas Pertanian dan Perikanan</td>
+                            <td>MCP</td>
+                            <td>Adendum</td>
+                            <td>
+                              <span class="badge badge-pill badge-success">Action</span>
+                            </td>
+                            <td>
+                              <a href="penyetoran.html">
+                                <button type="button" class="btn btn-primary btn-sm">Buka</button></td>
+                            </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap-datepicker.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+
+</html>

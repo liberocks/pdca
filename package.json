@@ -1,0 +1,31 @@
+{
+  "name": "pdca",
+  "version": "0.0.0",
+  "description": "pdca",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "rm database.sqlite3 && node_modules/.bin/sequelize db:migrate",
+    "start": "node_modules/.bin/nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/linerocks/pdca.git"
+  },
+  "author": "Tirtadwipa Manunggal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linerocks/pdca/issues"
+  },
+  "homepage": "https://github.com/linerocks/pdca#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1",
+    "sequelize": "^5.12.0",
+    "sequelize-cli": "^5.5.0",
+    "sqlite3": "^4.0.9",
+    "uuid": "^3.3.2"
+  }
+}
