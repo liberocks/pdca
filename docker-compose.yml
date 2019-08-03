@@ -6,7 +6,7 @@ services:
     ports:
       - "27017:27017"
   app:
-    container_name: 'pdca'
+    container_name: 'pdca-ccontainer'
     restart: always
     build: ./
     ports:
@@ -17,3 +17,8 @@ services:
       - mongo
     depends_on:
       - "mongo"
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:3000"]
+        interval: 5s
+        timeout: 10s
+        retries: 999
