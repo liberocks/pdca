@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>PDCA</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css" type="text/css" />
-  <link rel="stylesheet" href="assets/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/bootstrap-datepicker.min.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
 </head>
 
 <body>
-  <div class="alert alert-success fade" role="alert">
-    Data Setoran Tersimpan
-  </div>
+  <div class="alert alert-success fade" role="alert" id="alert-success"></div>
+  <div class="alert alert-danger fade" role="alert" id="alert-fail"></div>
   <div class="modal fade" id="modalBuatPenyetoran" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -28,7 +27,7 @@
           <form>
             <div class="form-group">
               <label class="col-form-label">SKPD</label>
-              <select id="skpd-select" class="form-control">
+              <select id="skpd-select" name="skpdselect" class="form-control">
                 <option selected>Pilih...</option>
                 <option>Dinas Indakop</option>
                 <option>BKPPD</option>
@@ -49,7 +48,7 @@
             </div>
             <div class="form-group">
               <label class="col-form-label">Jenis Review/Jenis Kegiatan</label>
-              <select id="proker" class="form-control">
+              <select id="proker" name="proker" class="form-control">
                 <option selected>Pilih...</option>
                 <option>DAK</option>
                 <option>MCP KPK</option>
@@ -60,24 +59,25 @@
                 <option value="others">Dokumen Lainnya</option>
               </select>
             </div>
-            <div class="form-group" style="display: none;" id="others-document">
+            <div class="form-group" style="display: none;" id="others-document" name="othersdocument">
               <label class="col-form-label">Dokumen Lainnya</label>
-              <input type="text" class="form-control" placeholder="Nama Dokumen">
+              <input type="text" class="form-control" placeholder="Nama Dokumen" name="othersdocumentform"
+                id="others-document-form">
             </div>
             <div class="form-group">
               <label class="col-form-label">Dokumen yang harus dikumpulkan (pisahkan dengan tanda
                 koma)</label>
-              <textarea class="form-control" rows="4"></textarea>
+              <textarea class="form-control" rows="4" name="requireddocuments"></textarea>
             </div>
             <div class="form-group">
               <label class="col-form-label">Tanggal Dokumen Harus Dikumpulkan</label><br>
-              <input class="datepicker" width="276" data-provide="datepicker">
+              <input class="datepicker" width="276" data-provide="datepicker" name="dueDate">
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-          <button type="submit" class="btn btn-primary save-setoran">Simpan</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Tutup</button>
+          <button type="submit" class="btn btn-primary save-setoran" id="buttonSave">Simpan</button>
         </div>
       </div>
     </div>
@@ -85,7 +85,6 @@
   <div>
     <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="/">
-        <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
         Sistem PDCA
       </a>
     </nav>
@@ -118,59 +117,7 @@
                             <th scope="col"></th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td>Dinas Indakop</td>
-                            <td>DAK</td>
-                            <td>Dokumen Kontrak, Adendum</td>
-                            <td>
-                              <span class="badge badge-pill badge-primary">Plan</span>
-                            </td>
-                            <td>
-                              <a href="/penyetoran">
-                                <button type="button" class="btn btn-primary btn-sm">Buka</button></td>
-                            </a>
-                          </tr>
-                          <tr>
-                            <td>BKPPD</td>
-                            <td>DAK</td>
-                            <td>Dokumen Kontrak, Adendum</td>
-                            <td>
-                              <span class="badge badge-pill badge-info">Do</span>
-                            </td>
-                            <td>
-                              <a href="/penyetoran">
-                                <button type="button" class="btn btn-primary btn-sm">Buka</button></td>
-                            </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>BKKPD</td>
-                            <td>DAK</td>
-                            <td>Dokumen Kontrak</td>
-                            <td>
-                              <span class="badge badge-pill badge-warning">Check</span>
-                            </td>
-                            <td>
-                              <a href="/penyetoran">
-                                <button type="button" class="btn btn-primary btn-sm">Buka</button></td>
-                            </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Dinas Pertanian dan Perikanan</td>
-                            <td>MCP</td>
-                            <td>Adendum</td>
-                            <td>
-                              <span class="badge badge-pill badge-success">Action</span>
-                            </td>
-                            <td>
-                              <a href="/penyetoran">
-                                <button type="button" class="btn btn-primary btn-sm">Buka</button></td>
-                            </a>
-                            </td>
-                          </tr>
-                        </tbody>
+                        <tbody id="table"> </tbody>
                       </table>
                     </div>
                   </div>
@@ -179,17 +126,36 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row justify-content-center">
 
       </div>
+      <div class="container">
+        <div class="d-flex mt-3 justify-content-between">
+          <ul class="pagination" id="paginationLimit">
+            <li class="page-item disabled"><a class="page-link" href="#">Dokumen per halaman</a></li>
+            <li class="page-item"><a class="page-link" id="pp10" href="#">10</a></li>
+            <li class="page-item"><a class="page-link" id="pp30" href="#">30</a></li>
+            <li class="page-item"><a class="page-link" id="pp50" href="#">50</a></li>
+            <li class="page-item"><a class="page-link" id="pp100" href="#">100</a></li>
+          </ul>
+
+
+          <ul class="pagination" id="paginationNumbers">
+            <li class="page-item"><a class="page-link" href="#" id="previous">Sebelumnya</a></li>
+            <li class="page-item"><a class="page-link" href="#" id="next">Selanjutnya</a></li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
-  <script src="assets/js/jquery-3.2.1.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap-datepicker.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/index.js"></script>
+  <script src="/assets/js/jquery-3.2.1.min.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap-datepicker.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/moment.js"></script>
+  <script src="/assets/js/pagination.min.js"></script>
+  <script src="/assets/js/index.js?v=<%= version %>"></script>
+  <script src="/assets/js/indexController.js?v=<%= version %>"></script>
 </body>
 
 </html>
