@@ -4,6 +4,8 @@ RUN apk add curl
 
 WORKDIR /app
 
+RUN mkdir -p storage
+
 COPY package.json package.json
 
 RUN npm install
