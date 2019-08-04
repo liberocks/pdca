@@ -2,5 +2,5 @@ node_modules
 indexRaw.js
 static/assets/js/indexControllerRaw.js
 static/assets/js/penyetoranControllerRaw.js
-
+storage/*
 documents/.~*
