@@ -66,6 +66,10 @@
                   <a class="nav-link" id="done-tab" data-toggle="tab" href="#done" role="tab" aria-controls="done"
                     aria-selected="false">Done</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="delete-tab" data-toggle="tab" href="#delete" role="tab" aria-controls="delete"
+                    aria-selected="false">Delete</a>
+                </li>
               </ul>
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade p-4" id="do" role="tabpanel" aria-labelledby="do-tab">
@@ -169,6 +173,15 @@
                     <div class="form-group">
                       <button type="button" class="btn btn-success save-setoran" id="save-done-form">Ya, tandai
                         selesai</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade p-4" id="delete" role="tabpanel" aria-labelledby="plan-tab">
+                  <form id="doneForm">
+                    <h5>Hapus dokumen?</h5>
+                    <p>Dokumen yang dihapus tidak bisa dikembalikan.</p>
+                    <div class="form-group">
+                      <button type="button" class="btn btn-danger" id="delete-data-form">Ya, hapus</button>
                     </div>
                   </form>
                 </div>
